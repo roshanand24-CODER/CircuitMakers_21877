@@ -1,244 +1,239 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CircuitMakers_21877</title>
-    <style>
-   body {
-    background: #0f172a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CircuitMakers_21877</title>
 
-  .scene {
-    position: relative;
-    width: 400px;
-    height: 200px;
-  }
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  /* Connector slot */
-  .slot {
-    position: absolute;
-    right: 40px;
-    top: 60px;
-    width: 80px;
-    height: 80px;
-    background: #111;
-    border: 3px solid #444;
-    border-radius: 6px;
-  }
-
-  .slot::before {
-    content: "";
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    width: 60px;
-    height: 60px;
-    background: #222;
-    border-radius: 4px;
-  }
-
-  /* Circuit board */
-  .board {
-    position: absolute;
-    left: 0;
-    top: 50px;
-    width: 160px;
-    height: 100px;
-    background: #166534;
-    border-radius: 6px;
-    animation: insert 4s infinite ease-in-out;
-  }
-
-  /* Edge connector */
-  .contacts {
-    position: absolute;
-    right: -6px;
-    top: 10px;
-  }
-
-  .contact {
-    width: 6px;
-    height: 14px;
-    background: gold;
-    margin: 6px 0;
-  }
-
-  /* Circuit traces */
-  .trace {
-    position: absolute;
-    left: 20px;
-    height: 4px;
-    width: 100px;
-    background: #22c55e;
-    top: 30px;
-    opacity: 0.2;
-    animation: power 4s infinite;
-  }
-
-  .trace.two { top: 55px; }
-  .trace.three { top: 80px; }
-
-  @keyframes insert {
-    0% { transform: translateX(0); }
-    35% { transform: translateX(190px); }
-    60% { transform: translateX(190px); }
-    100% { transform: translateX(0); }
-  }
-
-  @keyframes power {
-    0%, 35% { opacity: 0.2; }
-    45%, 70% {
-      opacity: 1;
-      box-shadow: 0 0 8px #22c55e;
+  <style>
+    body {
+      background: #0f172a;
+      padding-top: 80px;
+      color: white;
     }
-    100% { opacity: 0.2; }
-  }
-    </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      border-radius: 12px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+    }
+
+    /* Animation Scene */
+    .scene {
+      position: relative;
+      width: 400px;
+      height: 200px;
+      margin: 80px auto;
+    }
+
+    .slot {
+      position: absolute;
+      right: 40px;
+      top: 60px;
+      width: 80px;
+      height: 80px;
+      background: #111;
+      border: 3px solid #444;
+      border-radius: 6px;
+    }
+
+    .slot::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 60px;
+      height: 60px;
+      background: #222;
+      border-radius: 4px;
+    }
+
+    .board {
+      position: absolute;
+      left: 0;
+      top: 50px;
+      width: 160px;
+      height: 100px;
+      background: #166534;
+      border-radius: 6px;
+      animation: insert 4s infinite ease-in-out;
+    }
+
+    .contacts {
+      position: absolute;
+      right: -6px;
+      top: 10px;
+    }
+
+    .contact {
+      width: 6px;
+      height: 14px;
+      background: gold;
+      margin: 6px 0;
+    }
+
+    .trace {
+      position: absolute;
+      left: 20px;
+      height: 4px;
+      width: 100px;
+      background: #22c55e;
+      top: 30px;
+      opacity: 0.2;
+      animation: power 4s infinite;
+    }
+
+    .trace.two { top: 55px; }
+    .trace.three { top: 80px; }
+
+    @keyframes insert {
+      0% { transform: translateX(0); }
+      35% { transform: translateX(190px); }
+      60% { transform: translateX(190px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes power {
+      0%, 35% { opacity: 0.2; }
+      45%, 70% {
+        opacity: 1;
+        box-shadow: 0 0 8px #22c55e;
+      }
+      100% { opacity: 0.2; }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-      Bootstrap
-    </a>
-  </div>
-</nav>
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand fw-bold" href="#">CircuitMakers</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Team</a></li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
   </div>
 </nav>
-    <header>
-    <h1>The Circuit Makers</h1>
-    <div class="cards d-flex justify-content-evenly>
-    <div class="card-1">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Roshan Anand</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Programmer</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
-        <div class="card-2">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Nithin Ashok</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Programmer</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
-        <div class="card-3">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Vikas Gopinath</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Engineer</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
-        <div class="card-4">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Srihan Anand</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Engineer</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
-        <div class="card-5">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Nithilan Sai Saravanan</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Engineer</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
-        <div class="card-6">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Anish Gupta</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Supervisor/Engineer</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
-    </div>
-       <div class="animation">
-     <div class="scene">
-  <div class="board">
-    <div class="trace"></div>
-    <div class="trace two"></div>
-    <div class="trace three"></div>
 
-    <div class="contacts">
-      <div class="contact"></div>
-      <div class="contact"></div>
-      <div class="contact"></div>
-      <div class="contact"></div>
-      <div class="contact"></div>
+<header class="container">
+  <h1>The Circuit Makers</h1>
+
+  <div class="row justify-content-center g-4">
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+      <div class="card h-100 text-center">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Roshan Anand</h5>
+          <h6 class="card-subtitle text-muted">Programmer</h6>
+          <p class="card-text">Backend + AI systems</p>
+        </div>
+      </div>
     </div>
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+      <div class="card h-100 text-center">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Nithin Ashok</h5>
+          <h6 class="card-subtitle text-muted">Programmer</h6>
+          <p class="card-text">Full-stack development</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+      <div class="card h-100 text-center">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Vikas Gopinath</h5>
+          <h6 class="card-subtitle text-muted">Engineer</h6>
+          <p class="card-text">Hardware integration</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+      <div class="card h-100 text-center">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Srihan Anand</h5>
+          <h6 class="card-subtitle text-muted">Engineer</h6>
+          <p class="card-text">Robotics systems</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+      <div class="card h-100 text-center">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Nithilan Sai</h5>
+          <h6 class="card-subtitle text-muted">Engineer</h6>
+          <p class="card-text">Circuit design</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+      <div class="card h-100 text-center">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Anish Gupta</h5>
+          <h6 class="card-subtitle text-muted">Supervisor</h6>
+          <p class="card-text">System architecture</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <div class="slot"></div>
-</div>
+  <div class="scene">
+    <div class="board">
+      <div class="trace"></div>
+      <div class="trace two"></div>
+      <div class="trace three"></div>
+
+      <div class="contacts">
+        <div class="contact"></div>
+        <div class="contact"></div>
+        <div class="contact"></div>
+        <div class="contact"></div>
+        <div class="contact"></div>
+      </div>
     </div>
-    </header>
-    <section>
-      
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  </body>
+
+    <div class="slot"></div>
+  </div>
+</header>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
 </html>
+
